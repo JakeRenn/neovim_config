@@ -165,7 +165,7 @@ call plug#end()
     set list                " Show problematic characters.
 " }
 
-" Others{
+" Deoplete{
     call deoplete#enable()
     " Use deoplete.
     let g:deoplete#enable_at_startup = 1
