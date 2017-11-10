@@ -29,6 +29,8 @@ else
   Plug 'roxma/nvim-yarp'
   Plug 'roxma/vim-hug-neovim-rpc'
 endif
+Plug 'zchee/deoplete-clang'
+Plug 'zchee/deoplete-jedi'
 
 " a Git wrapper so awesome, the most popylar one
 Plug 'tpope/vim-fugitive'
@@ -39,6 +41,18 @@ Plug 'scrooloose/syntastic'
 " quoting/parenthesizing made simple
 Plug 'tpope/vim-surround'
 
+" superTab
+Plug 'ervandew/supertab'
+
+" snippet
+Plug 'honza/vim-snippets'
+
+" indent guide
+Plug 'nathanaelkane/vim-indent-guides'
+
+" auto pair
+Plug 'jiangmiao/auto-pairs'
+
 " Fuzzy file, buffer, mru, tag, etc finder
 Plug 'kien/ctrlp.vim'
 
@@ -47,7 +61,8 @@ Plug 'altercation/vim-colors-solarized'
 Plug 'tomasr/molokai'
 
 " comment stuff out
-Plug 'tpope/vim-commentary'
+" Plug 'tpope/vim-commentary'
+Plug 'scrooloose/nerdcommenter'
 
 " Vim plugin that display tags in a window, ordered by scope
 Plug 'majutsushi/tagbar'
@@ -99,6 +114,7 @@ call plug#end()
     set termguicolors
     set background=dark
     colorscheme molokai
+    " colorscheme solarized
     set cursorline                  " Highlight current line
 
     set backspace=indent,eol,start  " Backspace for dummies
@@ -169,12 +185,34 @@ call plug#end()
     call deoplete#enable()
     " Use deoplete.
     let g:deoplete#enable_at_startup = 1
-    inoremap <silent><expr> <TAB>
-    \ pumvisible() ? "\<C-n>" :
-    \ <SID>check_back_space() ? "\<TAB>" :
-    \ deoplete#mappings#manual_complete()
-    function! s:check_back_space() abort "{{{
-        let col = col('.') - 1
-        return !col || getline('.')[col - 1]  =~ '\s'
-    endfunction"}}}
+    " inoremap <silent><expr> <TAB>
+    " \ pumvisible() ? "\<C-n>" :
+    " \ <SID>check_back_space() ? "\<TAB>" :
+    " \ deoplete#mappings#manual_complete()
+    " function! s:check_back_space() abort "{{{
+    "     let col = col('.') - 1
+    "     return !col || getline('.')[col - 1]  =~ '\s'
+    " endfunction"}}}
+
+    " jedi
+    let g:deoplete#source#jedi#python_path = "/home/jake/anaconda3/bin/python"
+
+    let g:deoplete#source#clang#libclang_path = "/home/jake/Dependencies/clang+llvm-5.0.0-linux-x86_64-ubuntu16.04/lib/libclang.so"
+    let g:deoplete#source#clang#clang_header = "/home/jake/Dependencies/clang+llvm-5.0.0-linux-x86_64-ubuntu16.04/"
+    "let g:deoplete#source#clang#std = {'c': 'c11', 'cpp': 'c++1z', 'objc': 'c11', 'objcpp': 'c++1z'} 
+" }
+"
+" Auto Pair{
+    let g:AutoPairsFlyMode = 1
+    let g:AutoPairsShortcutBackInsert = '<M-b>'
+" }
+"
+" SuperTab{
+    let g:SuperTabDefaultCompletionType = "<c-n>"
+" }
+" NerdTree{
+    map <C-e> :NERDTreeToggle<CR>
+" }
+" Python{
+    nnoremap <buffer> <F9> :exec '!python' shellescape(@%, 1)<cr>
 " }
