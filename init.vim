@@ -21,6 +21,9 @@ Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 " Using a non-master branch
 Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
 
+" Python highlighter
+Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
+
 " Dark powered neo-completion
 if has('nvim')
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
