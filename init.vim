@@ -62,6 +62,7 @@ Plug 'kien/ctrlp.vim'
 " colorscheme
 Plug 'altercation/vim-colors-solarized'
 Plug 'tomasr/molokai'
+Plug 'mhartington/oceanic-next'
 
 " comment stuff out
 " Plug 'tpope/vim-commentary'
@@ -116,7 +117,8 @@ call plug#end()
     " Colorscheme options.
     set termguicolors
     set background=dark
-    colorscheme molokai
+    colorscheme OceanicNext
+    " colorscheme molokai
     " colorscheme solarized
     set cursorline                  " Highlight current line
 
